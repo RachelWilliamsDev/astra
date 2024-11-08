@@ -1,8 +1,8 @@
-import { Container, Wrapper } from "@/components";
+import { Container, Icons, Wrapper } from "@/components";
 import { BorderBeam } from "@/components/ui/border-beam";
 import { Button } from "@/components/ui/button";
 import SectionBadge from "@/components/ui/section-badge";
-import { perks } from "@/constants";
+import { features, perks } from "@/constants";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -75,6 +75,7 @@ const HomePage = () => {
           </div>
         </Container>
       </Wrapper>
+
       {/* How it works */}
       <Wrapper className="flex flex-col items-center justify-center py-12 relative">
         <Container>
@@ -102,6 +103,44 @@ const HomePage = () => {
                   <h3 className="text-lg font-medium mt-4">{perk.title}</h3>
                   <p className="text-muted-foreground mt-2 text-start">
                     {perk.info}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Container>
+      </Wrapper>
+
+      {/* Features */}
+      <Wrapper className="flex flex-col items-center justify-center py-12 relative">
+        <Container>
+          <div className="max-w-md mx-auto text-start md:text-center">
+            <SectionBadge title="Features" />
+            <h2 className="text-3xl lg:text-4xl font-semibold my-6">
+              Discover our powerful features
+            </h2>
+            <p className="text-muted-foreground mt-6">
+              Astra offers a range of features to help you build stunning
+              websites in no time
+            </p>
+          </div>
+        </Container>
+        <Container>
+          <div className="flex items-center justify-center mx-auto mt-8">
+            <Icons.feature className="w-auto h-80" />
+          </div>
+        </Container>
+        <Container>
+          <div className="flex flex-col items-center justify-center py-10 md:py-20 w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-8">
+              {features.map((feature, index) => (
+                <div key={index} className="flex flex-col items-start px-0">
+                  <div className="flex items-center justify-center">
+                    <feature.icon className="w-8 h-8" />
+                  </div>
+                  <h3 className="text-lg font-medium my-4">{feature.title}</h3>
+                  <p className="text-muted-foreground mt-2 text-start">
+                    {feature.info}
                   </p>
                 </div>
               ))}
