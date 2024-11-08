@@ -1,5 +1,4 @@
 import Icons from "./global/icons";
+import Navbar from "./navigation/navbar";
 
-export {
-    Icons,
-}
+export { Icons, Navbar };
