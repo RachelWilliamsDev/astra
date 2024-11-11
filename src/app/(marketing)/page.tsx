@@ -327,7 +327,7 @@ const HomePage = () => {
           "
           >
             <div className="flex flex-col md:flex-row items-start md:items-center justify-start md:justify-between w-full px-4 md:px-8 rounded-lg lg:rounded-2xl border border-border/80 py-4 md:py-8">
-              <div className="fle flex-col items-start gap-4 w-full">
+              <div className="flex flex-col items-start gap-4 w-full">
                 <h4 className="text-xl md:text-2xl font-semibold">
                   Join our newsletter
                 </h4>
