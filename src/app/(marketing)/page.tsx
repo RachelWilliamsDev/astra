@@ -9,14 +9,18 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Marquee from "@/components/ui/marquee";
 import SectionBadge from "@/components/ui/section-badge";
-import { features, perks, pricingCards } from "@/constants";
+import { features, perks, pricingCards, reviews } from "@/constants";
 import { cn } from "@/lib/utils";
-import { ArrowRight, ChevronRight, Zap } from "lucide-react";
+import { ArrowRight, ChevronRight, User, Zap } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 const HomePage = () => {
+  const firstRow = reviews.slice(0, reviews.length / 2);
+  const secondRow = reviews.slice(reviews.length / 2);
+
   return (
     <section className="w-full relative flex items-center justify-center flex-col px-4 md:px-0 py-8">
       {/* Hero */}
@@ -217,6 +221,80 @@ const HomePage = () => {
                 </CardFooter>
               </Card>
             ))}
+          </div>
+        </Container>
+      </Wrapper>
+
+      {/* Testimonials */}
+      <Wrapper className="flex flex-col items-center justify-center py-12 relative">
+        <Container>
+          <div className="max-w-md mx-auto text-start md:text-center">
+            <SectionBadge title="Our Customers" />
+            <h2 className="text-3xl lg:text-4xl font-semibold mt-6">
+              What people are saying
+            </h2>
+            <p className="text-muted-foreground mt-6">
+              See how Astra empowers business of all sizes. Here&apos;s what
+              real people are saying on Twitter/X
+            </p>
+          </div>
+        </Container>
+        <Container>
+          <div className="py-10 md:py-20 w-full">
+            <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden py-10">
+              <Marquee pauseOnHover className="[--duration:20s] select-none">
+                {firstRow.map((review) => (
+                  <figure
+                    key={review.name}
+                    className="relative w-64 cursor-pointer overflow-hidden rounded-xl border p-4 border-zinc-50/[.1] bg-background hover:bg-zinc-50/[.15]"
+                  >
+                    <div className="flex flex-row items-center gap-2">
+                      <User className="w-6 h-6" />
+                      <div className="flex flex-col">
+                        <figcaption className="text-sm font-medium">
+                          {review.name}
+                        </figcaption>
+                        <p className="text-sm font-medium text-muted-foreground">
+                          {review.username}
+                        </p>
+                      </div>
+                    </div>
+                    <blockquote className="mt-2 text-sm">
+                      {review.body}
+                    </blockquote>
+                  </figure>
+                ))}
+              </Marquee>
+              <Marquee
+                reverse
+                pauseOnHover
+                className="[--duration:20s] select-none"
+              >
+                {secondRow.map((review) => (
+                  <figure
+                    key={review.name}
+                    className="relative w-64 cursor-pointer overflow-hidden rounded-xl border p-4 border-zinc-50/[.1] bg-background hover:bg-zinc-50/[.15]"
+                  >
+                    <div className="flex flex-row items-center gap-2">
+                      <User className="w-6 h-6" />
+                      <div className="flex flex-col">
+                        <figcaption className="text-sm font-medium">
+                          {review.name}
+                        </figcaption>
+                        <p className="text-sm font-medium text-muted-foreground">
+                          {review.username}
+                        </p>
+                      </div>
+                    </div>
+                    <blockquote className="mt-2 text-sm">
+                      {review.body}
+                    </blockquote>
+                  </figure>
+                ))}
+              </Marquee>
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-background"></div>
+              <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-background"></div>
+            </div>
           </div>
         </Container>
       </Wrapper>
